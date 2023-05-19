@@ -1,0 +1,35 @@
+.cronCont {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 10px;
+  }
+  
+  .timer-box {
+    background-color: #014C80;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 4px solid darkcyan;
+  }
+  
+  .timer-label {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .timer-value {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  
+  .pause-button {
+    margin-top: 20px;
+  }
+
+  #cuentaReg{
+    display: none;
+  }

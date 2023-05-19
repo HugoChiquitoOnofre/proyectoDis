@@ -1,0 +1,35 @@
+    .chalkboard {
+      background-color: #000;
+      border-top: 10px solid #999;
+      border-bottom: 10px solid #999;
+      border-radius: 1ex;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #letrero{
+        display: none;
+    }
+
+    .chalkboard .neon-sign {
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 0 0 10px black, 0 0 20px #ff0000, 0 0 30px #ff0000;
+      margin-bottom: 20px;
+    }
+
+    .chalkboard .neon-sign:last-child {
+      text-shadow: 0 0 10px black, 0 0 20px #00ff00, 0 0 30px #00ff00;
+      margin-bottom: 0;
+    }
+
+    .chalkboard .neon-sign:last-child {
+      text-shadow: 0 0 10px black, 0 0 20px #0a4ad4, 0 0 30px #500ba0;
+      margin-bottom: 0;
+    }
+
+    #salida{
+      display: none;
+    }

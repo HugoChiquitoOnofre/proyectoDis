@@ -1,0 +1,63 @@
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dddfe2;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .form-radio-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .form-radio-group label {
+    margin-right: 10px;
+  }
+
+  .form-submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .form-submit-button:hover {
+    background-color: #1153b5;
+  }
+
+  #players-form{
+    display: none;
+  }
