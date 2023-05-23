@@ -22,42 +22,42 @@ function generarPregunta(nivel){
     var flag = 0;
     do{
         var num = 0;
+        var num2 = 0;
         var res = 0;
         var texto = "Calcular ";
         var cuenta = "";
         var numSigno = 1;
         var signo = "";
-        for(var i=0; i<2; i++){
-            var levMath;
-            if(nivel == 1 || nivel == 2){
-                num = Math.floor(Math.random()*9)+1;
-            } else{
-                num = Math.floor(Math.random()*40)+1;
-            }
-            
-            if(i===0){
-                cuenta = cuenta + num;
-            } else{
-                numSigno = Math.floor(Math.random()*50)+1;
-                switch(true){
-                case numSigno>=1 && numSigno<=15:
-                    signo = "+";
-                    break;
-                case numSigno>=16 && numSigno<=30:
-                    signo = "-";
-                    break;
-                case numSigno>=31 && numSigno<=45 && nivel>1:
-                    num = Math.floor(Math.random()*10)+1;
-                    signo = "*";
-                    break;
-                case numSigno>=46 && nivel>1:
-                    num = Math.floor(Math.random()*10)+1;
-                    signo = "/";
-                    break;
-                }
-                cuenta = cuenta + signo + num;
-            }
+        var levMath;
+
+        if(nivel == 1 || nivel == 2){
+            num = Math.floor(Math.random()*9)+1;
+            num2 = Math.floor(Math.random()*9)+1;
+        } else{
+            num = Math.floor(Math.random()*40)+1;
+            num2 = Math.floor(Math.random()*9)+1;
         }
+        
+        numSigno = Math.floor(Math.random()*50)+1;
+        switch(true){
+            case numSigno>=1 && numSigno<=15:
+                signo = "+";
+                break;
+            case numSigno>=16 && numSigno<=30:
+                signo = "-";
+                break;
+            case numSigno>=31 && numSigno<=45 && nivel>1:
+                num = Math.floor(Math.random()*10)+1;
+                signo = "*";
+                break;
+            case numSigno>=46 && nivel>1:
+                num = Math.floor(Math.random()*10)+1;
+                signo = "/";
+                break;
+        }
+        
+        cuenta = cuenta + num + signo + num2;
+        
         texto = texto + cuenta;
         res = eval(cuenta);
         if(res-Math.trunc(res)==0){
@@ -176,14 +176,14 @@ var flagError = 0;
 document.getElementById("opciones").addEventListener("click", function() {
     var opciones = document.getElementsByName("respuesta");
     var respuestaSeleccionada = -1;
- 
+
     for (var i = 0; i < opciones.length; i++) {
-       if (opciones[i].checked) {
-          respuestaSeleccionada = i;
-          break;
-       }
+        if (opciones[i].checked) {
+            respuestaSeleccionada = i;
+            break;
+        }
     }
- 
+
     if (respuestaSeleccionada === respuestaCorrecta) {
         opciones[respuestaSeleccionada].parentNode.style.color = "white";
         opciones[respuestaSeleccionada].parentNode.style.backgroundColor = "green";
@@ -193,7 +193,7 @@ document.getElementById("opciones").addEventListener("click", function() {
         opciones[respuestaSeleccionada].parentNode.style.backgroundColor = "red";
         flagError = 1;
     }
-   
+
     for (var i = 0; i < options.length; i++) {
         opciones[i].style.display = "none";
     }
@@ -205,9 +205,11 @@ document.getElementById("opciones").addEventListener("click", function() {
     }
     
     if(flagError === 1){
+        document.getElementById("formular").style.display = "none";
         document.getElementById("error").style.display = "block";
         document.getElementById("correcto").textContent = "Respuesta correcta: " + answer;
     } else{
+        document.getElementById("formular").style.display = "none";
         document.getElementById("error").style.display = "none";
         document.getElementById("correcto").textContent = "¡Correcto!";
         window.playerNumCorrect[numPlayer] = window.playerNumCorrect[numPlayer] + 1;
@@ -216,7 +218,7 @@ document.getElementById("opciones").addEventListener("click", function() {
 
     setTimeout(function() {
         document.getElementById("letrero").style.display = "none";
-    }, 3000);
+    }, 5000);
 
     setTimeout(function() {
         for (var i = 0; i < options.length; i++) {
@@ -237,9 +239,7 @@ document.getElementById("opciones").addEventListener("click", function() {
     // alert(textTest);
     document.getElementById("letrero").style.display = "none";
     }, 2000);
-
-
- });
+});
 
  function getChecked(){
     var options1 = document.getElementsByName("respuesta");
@@ -261,31 +261,31 @@ var timerInterval;
     var isPaused = true;
 
     // Obtiene las referencias a los elementos del cronómetro
-    var hoursElement = document.getElementById('hours');
-    var minutesElement = document.getElementById('minutes');
+    //var hoursElement = document.getElementById('hours');
+    //var minutesElement = document.getElementById('minutes');
     var secondsElement = document.getElementById('seconds');
 
     // Establece el tiempo inicial en segundos (cuenta regresiva de 10 segundos)
     var initialTime = 10;
-    var currentTime = Math.floor(Math.random() * 50) + 10;
+    var currentTime = initialTime;
 
     // Función para actualizar el cronómetro
     function updateTimer() {
-      if (isPaused) {
+    if (isPaused) {
         return;
-      }
+    }
 
-      var hours = Math.floor(currentTime / 3600);
-      var minutes = Math.floor((currentTime % 3600) / 60);
-      var seconds = currentTime % 60;
+    //var hours = Math.floor(currentTime / 3600);
+    //var minutes = Math.floor((currentTime % 3600) / 60);
+    var seconds = currentTime % 60;
 
       // Actualiza el contenido de las cajas de horas, minutos y segundos
-      hoursElement.innerHTML = pad(hours);
-      minutesElement.innerHTML = pad(minutes);
-      secondsElement.innerHTML = pad(seconds);
+    //hoursElement.innerHTML = pad(hours);
+    //minutesElement.innerHTML = pad(minutes);
+    secondsElement.innerHTML = pad(seconds);
 
       // Verifica si se ha alcanzado el tiempo final
-      if (currentTime <= 0) {
+    if (currentTime <= 0) {
         clearInterval(timerInterval);
         if(buttonsFlag === 0){
             botones();
@@ -361,6 +361,11 @@ document.getElementById('players-form').addEventListener('submit', function(even
         window.playerNames.push(playerNameInputs[i].value);
         window.playerNumQuestions[i] = 0;
     }
+
+    document.getElementById("image-baner").style.display = "none";
+    var titulo = document.getElementById("mensaje-banner");
+    titulo.innerText = "¡Partida en curso!";
+
     mostrarCuentaReg();
 });
 
