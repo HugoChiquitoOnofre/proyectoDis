@@ -138,13 +138,23 @@ function mostrarFormJugadores(){
     boton.style.display = "none";
 }
 
+function ocultarElementosDeInicio() {
+    document.getElementById("image-baner").style.display = "none";
+    document.getElementById("eslogan").style.display = "none";
+
+    var h2 = document.getElementById("mensaje-banner");
+    h2.textContent = "Nuevo texto";
+}
+
 function mostrarCuentaReg(){
+    // Ocultar elementos no necesarios
     var pForm = document.getElementById("players-form");
+    
+    // Mostrar cronometro
     var cronometro = document.getElementById("cuentaReg");
     cronometro.style.display = "block";
     pForm.style.display = "none";
     isPaused = false;
-    // alert(window.playerNames[0] + " " + window.playerNames[1]);
 }
 
 function mostrarBotones(){
@@ -189,13 +199,6 @@ document.getElementById("opciones").addEventListener("click", function() {
     }
 
 
-    // opciones = document.getElementsByName("respuesta");
-    // for (var i = 0; i < options.length; i++) {
-    //     options[i].querySelector("input[type='radio']").style.display = "none";
-    // }
-    
-
-
     for (var i = 0; i < options.length; i++) {
         var radio = options[i].querySelector("input[type='radio']");
         radio.style.display = "";
@@ -210,7 +213,6 @@ document.getElementById("opciones").addEventListener("click", function() {
         window.playerNumCorrect[numPlayer] = window.playerNumCorrect[numPlayer] + 1;
     }
     document.getElementById("letrero").style.display = "block";
-
 
     setTimeout(function() {
         document.getElementById("letrero").style.display = "none";
@@ -237,14 +239,6 @@ document.getElementById("opciones").addEventListener("click", function() {
     }, 2000);
 
 
-
-    // setTimeout(function(){
-    //     var cronometro = document.getElementById("cuentaReg");
-    //     var formulario = document.getElementById("formular");
-    //     formulario.style.display = "none";
-    //     cronometro.style.display = "block";
-    // }, 2000);
-    
  });
 
  function getChecked(){
@@ -262,7 +256,6 @@ document.getElementById("opciones").addEventListener("click", function() {
 
 getChecked();
 
-//////////////////////////////////////////////////////////////////////////////
 
 var timerInterval;
     var isPaused = true;
@@ -273,8 +266,8 @@ var timerInterval;
     var secondsElement = document.getElementById('seconds');
 
     // Establece el tiempo inicial en segundos (cuenta regresiva de 10 segundos)
-    var initialTime = 3;
-    var currentTime = initialTime;
+    var initialTime = 10;
+    var currentTime = Math.floor(Math.random() * 50) + 10;
 
     // Función para actualizar el cronómetro
     function updateTimer() {
@@ -294,9 +287,6 @@ var timerInterval;
       // Verifica si se ha alcanzado el tiempo final
       if (currentTime <= 0) {
         clearInterval(timerInterval);
-        // hoursElement.innerHTML = "00";
-        // minutesElement.innerHTML = "00";
-        // secondsElement.innerHTML = "00";
         if(buttonsFlag === 0){
             botones();
         }
@@ -323,7 +313,7 @@ var timerInterval;
 
     function resetTimer() {
         clearInterval(timerInterval);
-        currentTime = initialTime;
+        currentTime = Math.floor(Math.random() * 50) + 10;
         updateTimer();
         timerInterval = setInterval(updateTimer, 1000);
     }
@@ -361,31 +351,17 @@ document.getElementsByName('dificultad').forEach(function(radio) {
     dificultad = parseInt(this.value);
   });
 });
-
-
-
     
 document.getElementById('players-form').addEventListener('submit', function(event) {
   event.preventDefault();
 
-//   var window.playerNames = [];
-  var playerNameInputs = playersInputsContainer.getElementsByTagName('input');
-//   var textNames = "";
+    var playerNameInputs = playersInputsContainer.getElementsByTagName('input');
 
-  for (var i = 0; i < playerNameInputs.length; i++) {
-    window.playerNames.push(playerNameInputs[i].value);
-    window.playerNumQuestions[i] = 0;
-  }
-
-//   for (var i = 0; i < window.playerNames.length; i++) {
-//     textNames = textNames + " " + window.playerNames[i];
-//   }
-
-  console.log(window.playerNames);
-
-//   alert(textNames + "" +window.playerNames);
-
-  mostrarCuentaReg();
+    for (var i = 0; i < playerNameInputs.length; i++) {
+        window.playerNames.push(playerNameInputs[i].value);
+        window.playerNumQuestions[i] = 0;
+    }
+    mostrarCuentaReg();
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -413,12 +389,6 @@ function botones(){
 }
 
 function terminarPartida(){
-    // console.info("window var =", window.window.playerNames);
-    // console.info("window var =", window.window.playerNumQuestions);
-    // console.info("window var =", window.window.playerNumCorrect);
-    // window.playerNamesG = playerNames;
-    // window.playerNumQuestionsG = playerNumQuestions;
-    // window.playerNumCorrectG = playerNumCorrect;
     localStorage.setItem('playerNamesG', JSON.stringify(playerNames));
     localStorage.setItem('playerNumQuestionsG', JSON.stringify(playerNumQuestions));
     localStorage.setItem('playerNumCorrectG', JSON.stringify(playerNumCorrect));
@@ -428,110 +398,3 @@ function terminarPartida(){
     isPaused=true;
     outText.style.display = "block";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var options = document.querySelectorAll("#opciones li");
-// var question;
-// var answer;
-// var listaRespuestas=[];
-// var respuestaCorrecta;
-
-// function cambiarPregunta() {
-//     getChecked();
-//     generarPregunta(3);
-//     generarOpciones();
- 
-//     document.getElementById("pregunta").textContent = question;
- 
-//     var opciones = document.getElementById("opciones");
-//     opciones.innerHTML = "";
- 
-//     for (var i = 0; i < 4; i++) {
-//        var opcion = document.createElement("li");
-//        var input = document.createElement("input");
-//        input.type = "radio";
-//        input.name = "respuesta";
-//        input.value = "opcion" + (i + 1);
- 
-//        opcion.appendChild(input);
-//        opcion.appendChild(document.createTextNode(listaRespuestas[i]));
- 
-//        opciones.appendChild(opcion);
-//     }
-//     resaltarOpcionSeleccionada();
-// }
-
-// function generarOpciones(){
-//     if(listaRespuestas.length==0){
-//         for(var i=0; i<=3; i++){
-//             listaRespuestas.push(Math.floor(Math.random()*answer+20)+(answer-20))
-//         }
-//     } else{
-//         for(var i=0; i<=3; i++){
-//             listaRespuestas[i] = Math.floor(Math.random()*answer+20)+(answer-20)
-//         }
-//     }
-//     respuestaCorrecta = Math.floor(Math.random()*3)+0;
-//     listaRespuestas[respuestaCorrecta] = answer;
-// }
-
-// document.getElementById("opciones").addEventListener("click", function() {
-//     var opciones = document.getElementsByName("respuesta");
-//     var respuestaSeleccionada = -1;
- 
-//     for (var i = 0; i < opciones.length; i++) {
-//        if (opciones[i].checked) {
-//           respuestaSeleccionada = i;
-//           break;
-//        }
-//     }
- 
-//     if (respuestaSeleccionada === respuestaCorrecta) {
-//         opciones[respuestaSeleccionada].parentNode.style.color = "white";
-//         opciones[respuestaSeleccionada].parentNode.style.backgroundColor = "green";
-//     } else {
-//         opciones[respuestaSeleccionada].parentNode.style.color = "white";
-//         opciones[respuestaSeleccionada].parentNode.style.backgroundColor = "red";
-//     }
-
-//     for (var i = 0; i < options.length; i++) {
-//         options[i].querySelector("input[type='radio']").style.display = "none";
-//     }
-
-//     setTimeout(function() {
-//         for (var i = 0; i < options.length; i++) {
-//             options[i].querySelector("input[type='radio']").style.display = "";
-//         }
-//         cambiarPregunta();
-//     }, 2000);
-// });
-
-// cambiarPregunta();

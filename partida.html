@@ -42,51 +42,48 @@
         <!-- Banner -->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                <img class="masthead-avatar mb-1" src="assets/img/avataaars.svg" id="image-baner" alt="..." height="120" width="120" />
-                <h1 id="mensaje-banner" class="text-uppercase mb-0">Iniciar nueva partida</h1>
+                <img class="masthead-avatar mb-1" src="assets/img/avataaars.svg" alt="..." height="150" width="150" />
+                <h1 class="masthead-heading text-uppercase mb-0">Iniciar nueva partida</h1>
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <div id="eslogan">
-                    <p id="eslogan" class="masthead-subheading font-weight-light mb-0">Rapidez - Agilidad - Diversión</p>
-                </div>
+                <p class="masthead-subheading font-weight-light mb-0">Rapidez - Agilidad - Diversión</p>
             </div>
         </header>
-        <section class="mt-5 portfolio" id="portfolio">         
-                
-            <div id="boton" class="boton">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4 mb-1 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" onclick="mostrarFormJugadores()">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white">Nueva partida</div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/game.png"/>
-                        </div>
+        <section class="page-section portfolio" id="portfolio">         
+                <div id="boton" class="boton">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-4 mb-1 mb-lg-0">
+                           <div class="portfolio-item mx-auto" data-bs-toggle="modal" onclick="mostrarFormJugadores()">
+                               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                   <div class="portfolio-item-caption-content text-center text-white">Nueva partida</div>
+                               </div>
+                               <img class="img-fluid" src="assets/img/portfolio/game.png"/>
+                           </div>
+                       </div>
                     </div>
                 </div>
-            </div>
                 
                 <!--Formulario de configuración de partida-->
-                <div class="form-container" id="players-form">
-                    <form>
+                <div class="form-container">
+                    <form id="players-form">
                         <h4 class="form-title">Seleccionar dificultad</h4>
                         <div class="form-group">
                             <label class="form-label">Dificultad:</label>
                             <div class="form-radio-group">
-                            <label>
+                              <label>
                                 <input type="radio" name="dificultad" value="1" required> Fácil
-                            </label>
-                            <label>
+                              </label>
+                              <label>
                                 <input type="radio" name="dificultad" value="2"> Normal
-                            </label>
-                            <label>
+                              </label>
+                              <label>
                                 <input type="radio" name="dificultad" value="3"> Difícil
-                            </label>
+                              </label>
                             </div>
-                        </div>
+                          </div>
                         <h4 class="form-title">Seleccionar jugadores</h4>
                         <div class="form-group">
                             <label class="form-label">Número de Participantes (2-4):</label>
@@ -102,42 +99,44 @@
                             </label>
                             </div>
                         </div>
-                    <div id="players-inputs"></div>
-                    <button type="submit" class="form-submit-button">Enviar</button>
+                      <div id="players-inputs"></div>
+                      <button type="submit" class="form-submit-button" onclick="partida.html">Enviar</button>
                     </form>
                 </div>
                 
                 <!-- Contador -->
-                <div class="cronCont" id="cuentaReg">
-                    <div class="container">
+                <div class="cronCont">
+                    <div id="cuentaReg" class="container">
                         <h3>Siguiente pregunta en:</h3>
                         <br>
+                         
                         <div class="row justify-content-center">
-                        <div class="col-md-4">
+                          <div class="col-md-4">
                             <div class="timer-box">
-                                <p class="timer-label">Horas</p>
-                                <h1 class="timer-value" id="hours">00</h1>
+                              <p class="timer-label">Horas</p>
+                              <h1 class="timer-value" id="hours">00</h1>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                          </div>
+                          <div class="col-md-4">
                             <div class="timer-box">
-                                <p class="timer-label">Minutos</p>
-                                <h1 class="timer-value" id="minutes">00</h1>
+                              <p class="timer-label">Minutos</p>
+                              <h1 class="timer-value" id="minutes">00</h1>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                          </div>
+                          <div class="col-md-4">
                             <div class="timer-box">
-                                <p class="timer-label">Segundos</p>
-                                <h1 class="timer-value" id="seconds">00</h1>
+                              <p class="timer-label">Segundos</p>
+                              <h1 class="timer-value" id="seconds">00</h1>
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                          </div>
+                          <div class="col-md-12">
                             <button id="pauseButton" class="btn btn-primary pause-button" onclick="pauseTimer()">Pausar</button>
                             <button id="pauseButton" class="btn btn-primary pause-button" onclick="terminarPartida()">Terminar partida</button>
+                          </div>
                         </div>
-                        </div>
-                    </div>
+                      </div>
                 </div>
+
                 <div class="form-container" id="buttons-container">
                     <div class="player-buttons" id="player-buttons-container"><h2>Selecciona tu nombre.</h2></div>
                     <!-- <div> -->
@@ -148,48 +147,51 @@
                 <div id="formular">
                     <h3 id="pregunta">Pregunta:</h3>
                     <ul id="opciones">
-                        <li><input type="radio" name="respuesta" class = "respuesta"> A</li>
-                        <li><input type="radio" name="respuesta" class = "respuesta"> B</li>
-                        <li><input type="radio" name="respuesta" class = "respuesta"> C</li>
-                        <li><input type="radio" name="respuesta" class = "respuesta"> D</li>
+                       <li><input type="radio" name="respuesta" class = "respuesta"> A</li>
+                       <li><input type="radio" name="respuesta" class = "respuesta"> B</li>
+                       <li><input type="radio" name="respuesta" class = "respuesta"> C</li>
+                       <li><input type="radio" name="respuesta" class = "respuesta"> D</li>
                     </ul>
                     <!-- <button id="cambiarPregunta" onclick="cambiarPregunta()">Cambiar pregunta</button> -->
-                </div>
-                <!--Validar respuesta-->
-                <div class="container">
+                 </div>
+                 
+                 <!--Validar respuesta-->
+                 <div class="container">
                     <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                      <div class="col-md-6 offset-md-3">
                         <div id="letrero" class="chalkboard">
-                            <div id="error" class="neon-sign" style="color: #ff0000; display: none;">
-                                ¡Error!
-                            </div>
-                        <div id="correcto" class="neon-sign" style="color: #00ff00;">
+                          <div id="error" class="neon-sign" style="color: #ff0000; display: none;">
+                            ¡Error!
+                          </div>
+                          <div id="correcto" class="neon-sign" style="color: #00ff00;">
                             Respuesta: 
+                          </div>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                    </div>
-                </div>
-                <!--Mensaje de fin de juego-->
-                <div class="container">
+                  </div>
+                
+                  <!--Mensaje de fin de juego-->
+                  <div class="container">
                     <div class="row">
-                        <div class="col-md-6 offset-md-3">
-                            <div id="salida" class="chalkboard">
-                                <div class="neon-sign" style="color: #38ADCC;">
-                                    ¡Bien jugado! 
-                                </div>
-                            </div>
+                      <div class="col-md-6 offset-md-3">
+                        <div id="salida" class="chalkboard">
+                          <div class="neon-sign" style="color: #38ADCC;">
+                            ¡Bien jugado! 
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
+
+               </div>
             </div>
-        </div>
         </section>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js" defer></script>
-        <script src="js/funciones.js" defer></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/funciones.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
