@@ -34,8 +34,8 @@ function generarPregunta(nivel){
             num = Math.floor(Math.random()*9)+1;
             num2 = Math.floor(Math.random()*9)+1;
         } else{
-            num = Math.floor(Math.random()*40)+1;
-            num2 = Math.floor(Math.random()*9)+1;
+            num = Math.floor(Math.random()*40)+10;
+            num2 = Math.floor(Math.random()*40)+1;
         }
         
         numSigno = Math.floor(Math.random()*50)+1;
@@ -56,7 +56,7 @@ function generarPregunta(nivel){
                 break;
         }
         
-        cuenta = cuenta + num + signo + num2;
+        cuenta = num + signo + num2;
         
         texto = texto + cuenta;
         res = eval(cuenta);
